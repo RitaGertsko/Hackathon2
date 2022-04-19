@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='products_style.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main>
+    <div id="products-container">
+        {% for product in products %}
+        <div class="card card-product">
+            <a href="#"><img src="{{ product.img }}" class="card-img-top card-img" alt="..."></a>
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+            </div>
+            <a href="{{ url_for('productInfo', product_id=product.id) }}" class="btn btn-hyperlink btn-outline-success">Read More</a>
+            <a href="{{ url_for('addToCart', product_id=product.id) }}" class="btn btn-hyperlink btn-outline-success">Add to cart</a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

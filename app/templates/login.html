@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='sing_UpAndIn_style.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main>
+    <form id="form" method="POST">
+        <h2>Login</h2>
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-12">
+                {{ form.email.label(class_='form-label') }}
+
+                {% if form.email.errors %}
+                {{ form.email(class_='form-control input-form is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class_='form-control input-form') }}
+                {% endif %}
+
+            </div>
+            <div class="col-12">
+                {{ form.password.label(class_='form-label') }}
+
+                {% if form.password.errors %}
+                {{ form.password(class_='form-control input-form is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class_='form-control input-form') }}
+                {% endif %}
+
+            </div>
+            <div class="col-12" id="rememberMeFiled">
+                {{ form.remember(class_='form-control input-form', id='rememberMeCheckbox') }}
+                {{ form.remember.label(class_='form-label', id='rememberMeLabel') }}
+            </div>
+            <div class="col-12">
+                {{ form.submit(class="btn btn-outline-success", id='sing-up-button') }}
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock content %}

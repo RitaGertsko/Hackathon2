@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='error.css') }}">
+{% endblock head %}
+
+{% block content %}
+<body>
+<main id="main-errors">
+    <div id="wrapper">
+        <div>
+            <h1>Page not found...404 error</h1>
+        </div>
+        <div>
+            <a href="{{url_for('home')}}" id="btn-back-to-home" class="btn btn-outline-success">Back to the Homepage</a>
+        </div>
+    </div>
+</main>
+</body>
+{% endblock content %}

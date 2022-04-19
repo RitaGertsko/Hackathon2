@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='cart_style.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main>
+    {% if not cart %}
+    <div id="empty-cart-container">
+        <div id="empty-cart-wrapper">
+            <div>
+                <h1>Your cart is currently empty</h1>
+            </div>
+            <div>
+                <a href="{{ url_for('home') }}" class="btn btn-outline-success" role="button"
+                   id="continue-shopping-button" aria-pressed="true">CONTINUE
+                    SHOPPING</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div id="cart-items-table-container">
+        <table class="table table-striped" id="cart-items-table">
+            <thead class="table-success">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in cart %}
+            <tr>
+                <th scope="row">
+                    <a href="#">
+                        <img src="{{ product.img }}" class="cart-img" alt="...">
+                    </a>
+                </th>
+                <td>
+                    <a href="#" class="product-title">{{ product.title }}</a>
+                </td>
+                <td>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <div class="d-flex form-group">
+                            <input type="hidden" name="id-product" class="quantity-items-input"
+                                   value="{{ product.id }}"/>
+                            <select class="form-control quantity-items-selector" name="qty">
+                                <option value="{{ product.cart_quantity }}">{{ product.cart_quantity }}</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            <div>
+                                <button class="btn btn-outline-success" type="submit" id="update-button">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td>{{ product.price }}$</td>
+                <td>
+                    <a href="{{ url_for('removeFromCart', product_id=product.id) }}"><i
+                            class="fas fa-trash trash-icon"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row">Total:</th>
+                <td colspan="3"></td>
+                <td class="table-active">{{ total }}$</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</main>
+{% endblock content %}

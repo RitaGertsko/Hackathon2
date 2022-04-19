@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main>
+    <div id="carousel-slideshow-gallery-container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                {% for sale in sales %}
+                {% if sale.image != None %}
+                <div class="carousel-item {% if loop.index == 1 %} active {% endif %}" id="slide{{ loop.index }}">
+                    <img class="d-block image" src="{{ sale.image }}" alt="First slide">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <section id="main-body">
+        <div id="articles-container">
+            <div>
+                <h2 id="articles-header">Articles</h2>
+            </div>
+
+            <div id="articles-body" class="d-flex">
+                <div class="card">
+                    <a href="{{ skin_care_article.articleUrl }}" target="_blank">
+                        <img src="{{ skin_care_article.image }}" class="card-img-top article-img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ skin_care_article.title }}</h5>
+                            <p class="card-text">{{ skin_care_article.summary }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="{{ hair_article.articleUrl }}" target="_blank">
+                        <img src="{{ hair_article.image }}" class="card-img-top article-img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ hair_article.title }}</h5>
+                            <p class="card-text">{{ hair_article.summary }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="{{ makeup_article.articleUrl }}" target="_blank">
+                        <img src="{{ makeup_article.image }}" class="card-img-top article-img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ makeup_article.title }}</h5>
+                            <p class="card-text">{{ makeup_article.summary }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <a href="#" class="btn btn-hyperlink btn-outline-success">More Articles</a>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock content %}

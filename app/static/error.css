@@ -1,0 +1,15 @@
+#main-errors {
+  margin: 1em 0 0 1em;
+  height: 100rem;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#btn-back-to-home {
+  outline: 2px solid rgb(248, 232, 142);
+  color: black;
+}

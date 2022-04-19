@@ -1,0 +1,82 @@
+main {
+  height: 100rem;
+}
+
+#carousel-slideshow-gallery-container {
+  margin-top: 1.5em;
+}
+
+#carouselExampleIndicators {
+  border-top: 2px solid rgb(248, 232, 142);
+  border-bottom: 2px solid rgb(248, 232, 142);
+}
+
+.image {
+  width: 100%;
+  height: 28em;
+}
+
+.carousel-control-prev-icon {
+  background-color: black !important;
+}
+
+.carousel-control-next-icon {
+  background-color: black !important;
+}
+
+#main-body {
+  margin-top: 5em;
+  height: 50rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#articles-container {
+  padding: 2em;
+  height: 30em;
+  width: 60rem;
+  border: 1px solid rgb(248, 232, 142);
+  background-color: rgba(51, 153, 102, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+#articles-header {
+  border-bottom: 2px solid rgb(248, 232, 142);
+}
+
+#articles-body {
+  height: 30em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.card {
+  height: 18rem;
+  width: 16rem;
+  overflow: hidden;
+  border: 1px solid rgb(248, 232, 142);
+}
+
+.article-img {
+  height: 10em;
+  border: 1px solid rgb(248, 232, 142);
+}
+
+.card-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.btn-hyperlink {
+  outline: 2px solid rgb(248, 232, 142);
+  color: black;
+  font-weight: 700;
+}

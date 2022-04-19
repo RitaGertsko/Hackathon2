@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='product_info.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main>
+    <div id="product-info-wrapper">
+        <article id="product-info">
+            <h1>{{ product.title }}</h1>
+            <p>{{ product.company }}</p>
+            <p>{{ product.price }}$</p>
+
+            <div class="collapse-bars" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
+                 aria-expanded="false" aria-controls="multiCollapseExample1">
+                Description
+            </div>
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    {{ product.description }}
+                </div>
+            </div>
+            <div class="collapse-bars" data-bs-toggle="collapse"
+                 data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                Ingredients
+            </div>
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    {{ product.ingredients }}
+                </div>
+            </div>
+
+            <div id="info-page-button-wrapper">
+                <button class="btn btn-hyperlink btn-outline-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".multi-collapse"
+                        aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Close
+                    Everything
+                </button>
+                <a href="{{ url_for('addToCart', product_id=product.id) }}"
+                   class="btn btn-hyperlink btn-outline-success">Add
+                    to cart</a>
+            </div>
+        </article>
+        <div id="product-gallery-container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ product.img }}" class="d-block product-img" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ product.img2 }}" class="d-block product-img" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ product.img3 }}" class="d-block product-img" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
